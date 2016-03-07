@@ -1,6 +1,7 @@
 <?php
 
-$base_api_url = "https://eda22bb1.ngrok.io/templates/dev/api";
+//$base_api_url = "https://eda22bb1.ngrok.io/templates/dev/api";
+$base_api_url = "http://localhost/templates/dev/api";
 $base_api_key = "1234567890QWERTYzxcvb";
 
 
@@ -149,6 +150,7 @@ $base_api_key = "1234567890QWERTYzxcvb";
 							</div>
 
 							<div align="left">
+							
 								<div id="userinfo">
 
 									<div class="row show-grid">
@@ -172,6 +174,12 @@ $base_api_key = "1234567890QWERTYzxcvb";
 
 								- {base-url}/login/<i>username</i>/<i>password</i>/{api-key}
 							</div>
+
+							<div align="left">
+								<button id="testpostbutton"  class="btn btn-success" style="margin-bottom: 1.5em;">
+									Post Test 
+								</button>
+							</div>  
 
 							<div align="left">
 								<button id="testprofilesbutton" disabled class="btn btn-success" style="margin-bottom: 1.5em;">

@@ -385,3 +385,45 @@ $("#testprofilesbutton").click(function(e) {
 
 });
 
+
+$("#testpostbutton").click(function(e) {
+	
+	e.preventDefault();
+	cleardivs();
+	
+	var uid = $("#uid").val();
+	var pwd = $("#pwd").val();
+		
+	$.ajax({
+		url:  base_api_uri+"/register/" + test_api_key,
+		type: "POST",
+		data: JSON.stringify({ "userName": uid, "password" : pwd }),
+		contentType: "application/x-www-form-urlencoded",
+		dataType: 'json',
+		xhrFields: {
+			withCredentials: true
+		},
+		crossDomain: true,
+		success: function (data, status, jqXHR) {
+			
+			$('#ajaxspinner').hide();
+			$("#outputpre").append(JSON.stringify(data, undefined, 2));
+			$("#headerpre").text(jqXHR.getAllResponseHeaders());
+						
+			
+			$.each(data, function (key, value) {
+				//handle the data  
+				console.log(key,value);
+			});
+
+
+		},
+		error: function (ts) {
+			$('#ajaxspinner').hide();
+			console.log(ts.responseText);
+		},
+		
+	});
+
+});
+
