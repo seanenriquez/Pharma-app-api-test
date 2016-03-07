@@ -90,8 +90,6 @@ $base_api_key = "1234567890QWERTYzxcvb";
 			</div>
 		</div>
 
-		</div>
-
 		<div class="navbar navbar-fixed-top navbar-inverse">
 			<div class="navbar-inner">
 				<div class="container">
@@ -188,6 +186,17 @@ $base_api_key = "1234567890QWERTYzxcvb";
 							</div>                
 							
 							<div align="left">
+								<div id="userinfo">
+
+									<div class="row show-grid">
+										<div class="span6">
+											<div class="control-group">
+												<input id="profileid" class="control-label"> Profile ID for Prescription List
+											</div>
+										</div>
+									</div>
+
+								</div> 
 								<button id="testscriptsbutton" disabled class="btn btn-success" style="margin-bottom: 1.5em;">
 									Presciptions 
 								</button>

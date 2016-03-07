@@ -213,11 +213,12 @@ function cleardivs() {
 	$('#ajaxspinner').show();
 
 }
-	function timerDisbleButtons() {
-				
-		$("#testprofilesbutton").prop('disabled', false);
-		$("#testscriptsbutton").prop('disabled', false);
-	}
+
+function timerDisbleButtons() {
+			
+	$("#testprofilesbutton").prop('disabled', false);
+	$("#testscriptsbutton").prop('disabled', false);
+}
 
 $("#testaboutbutton").click(function(e) {
 	
@@ -230,7 +231,6 @@ $("#testaboutbutton").click(function(e) {
 		xhrFields: {
 			withCredentials: true
 		},
-		crossDomain: true,
 		success: function (data, status, jqXHR) {
 			
 			$('#ajaxspinner').hide();
@@ -263,7 +263,6 @@ $("#testservicesbutton").click(function(e) {
 		xhrFields: {
 			withCredentials: true
 		},
-		crossDomain: true,
 		success: function (data, status, jqXHR) {
 			                                                                     0
 			$('#ajaxspinner').hide();
@@ -300,7 +299,6 @@ $("#testloginbutton").click(function(e) {
 		xhrFields: {
 			withCredentials: true
 		},
-		crossDomain: true,
 		success: function (data, status, jqXHR) {
 			
 			$('#ajaxspinner').hide();
@@ -346,12 +344,58 @@ $("#testprofilesbutton").click(function(e) {
 	var pwd = $("#pwd").val();
 		
 	$.ajax({
-		url:  base_api_uri+"/login/" + uid + "/" + pwd + "/" + test_api_key,
+		url:  base_api_uri+"/profiles/" + test_api_key,
 		dataType: 'json',
 		xhrFields: {
 			withCredentials: true
 		},
-		crossDomain: true,
+		success: function (data, status, jqXHR) {
+			
+			$('#ajaxspinner').hide();
+			$("#outputpre").append(JSON.stringify(data, undefined, 2));
+			$("#headerpre").text(jqXHR.getAllResponseHeaders());
+			
+			if (data.is_logged)  {
+				
+				$("#testprofilesbutton").prop('disabled', false);
+				$("#testscriptsbutton").prop('disabled', false);
+				
+			}
+			else {
+				
+			}
+			
+			
+			$.each(data, function (key, value) {
+				//handle the data  
+				console.log(key,value);
+			});
+
+
+		},
+		error: function (ts) {
+			$('#ajaxspinner').hide();
+			console.log(ts.responseText);
+		},
+		
+	});
+
+});
+
+
+$("#testscriptsbutton").click(function(e) {
+	
+	e.preventDefault();
+	cleardivs();
+	
+	var profid = $("#profileid").val();
+		
+	$.ajax({
+		url:  base_api_uri+"/patients/" + profid + "/" + test_api_key,
+		dataType: 'json',
+		xhrFields: {
+			withCredentials: true
+		},
 		success: function (data, status, jqXHR) {
 			
 			$('#ajaxspinner').hide();
