@@ -397,13 +397,15 @@ $("#testpostbutton").click(function(e) {
 	$.ajax({
 		url:  base_api_uri+"/register/" + test_api_key,
 		type: "POST",
-		data: JSON.stringify({ "userName": uid, "password" : pwd }),
+		data: {
+        password: pwd,
+        userid: uid
+    	},
 		contentType: "application/x-www-form-urlencoded",
 		dataType: 'json',
 		xhrFields: {
 			withCredentials: true
 		},
-		crossDomain: true,
 		success: function (data, status, jqXHR) {
 			
 			$('#ajaxspinner').hide();

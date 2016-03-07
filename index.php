@@ -1,7 +1,7 @@
 <?php
 
 //$base_api_url = "https://eda22bb1.ngrok.io/templates/dev/api";
-$base_api_url = "http://localhost/templates/dev/api";
+$base_api_url = "https://eda22bb1.ngrok.io/templates/dev/api";
 $base_api_key = "1234567890QWERTYzxcvb";
 
 
