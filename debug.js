@@ -1,4 +1,5 @@
-var test_api_key = "1234567890QWERTYzxcvb";
+var test_api_key = $("#keyvalue").val();
+var base_api_uri = $("#urlvalue").val();
 
 function showHeaders() {
 	showAuthHeaders();
@@ -196,14 +197,10 @@ function createHeaderData(){
 
 function httpZeroError() {
 	$("#errordiv").append('<div class="alert alert-error"> <a class="close" data-dismiss="alert">&times;</a> <strong>Oh no!</strong> Javascript returned an HTTP 0 error. One common reason this might happen is that you requested a cross-domain resource from a server that did not include the appropriate CORS headers in the response. Better open up your Firebug...</div>');
-}
+}            
 
-$("#testaboutbutton").click(function(e) {
+function cleardivs() {
 	
-	e.preventDefault();
-	
-	var base_api_uri = $("#urlvalue").val();
-
 	$("#outputframe").hide();
 	$("#outputpre").empty();
 	$("#headerpre").empty();
@@ -214,18 +211,31 @@ $("#testaboutbutton").click(function(e) {
 	$("#statuspre").removeClass("alert-error");
 	$("#statuspre").removeClass("alert-warning");
 	$('#ajaxspinner').show();
+
+}
+	function timerDisbleButtons() {
+				
+		$("#testprofilesbutton").prop('disabled', false);
+		$("#testscriptsbutton").prop('disabled', false);
+	}
+
+$("#testaboutbutton").click(function(e) {
 	
+	e.preventDefault();
+	cleardivs();
+		
 	$.ajax({
-		url:  base_api_uri+"api/about/"+test_api_key,
+		url:  base_api_uri+"/about/"+test_api_key,
 		dataType: 'json',
 		xhrFields: {
 			withCredentials: true
 		},
 		crossDomain: true,
-		success: function (data, status) {
-			$('#ajaxspinner').hide();
+		success: function (data, status, jqXHR) {
 			
-			$("#outputpre").append(JSON.stringify(data));
+			$('#ajaxspinner').hide();
+			$("#outputpre").append(JSON.stringify(data, undefined, 4));
+			$("#headerpre").text(jqXHR.getAllResponseHeaders());
 			
 			$.each(data, function (key, value) {
 				//handle the data  
@@ -236,13 +246,141 @@ $("#testaboutbutton").click(function(e) {
 		},
 		error: function (ts) {
 			$('#ajaxspinner').hide();
-			$("#errordiv").append(ts.responseText);
+			console.log(ts.responseText);
 		},
 		
-		complete: function () {
-        // Handle the complete event
-        alert("ajax completed " + cartObject.productID);
-      }
+	});
+
+});
+$("#testservicesbutton").click(function(e) {
+	
+	e.preventDefault();
+	cleardivs();
+		
+	$.ajax({
+		url:  base_api_uri+"/services/"+test_api_key,
+		dataType: 'json',
+		xhrFields: {
+			withCredentials: true
+		},
+		crossDomain: true,
+		success: function (data, status, jqXHR) {
+			                                                                     0
+			$('#ajaxspinner').hide();
+			$("#outputpre").append(JSON.stringify(data, undefined, 2));
+			$("#headerpre").text(jqXHR.getAllResponseHeaders());
+			
+			$.each(data, function (key, value) {
+				//handle the data  
+				console.log(key,value);
+			});
+
+
+		},
+		error: function (ts) {
+			$('#ajaxspinner').hide();
+			console.log(ts.responseText);
+		},
+		
+	});
+
+});
+
+$("#testloginbutton").click(function(e) {
+	
+	e.preventDefault();
+	cleardivs();
+	
+	var uid = $("#uid").val();
+	var pwd = $("#pwd").val();
+		
+	$.ajax({
+		url:  base_api_uri+"/login/" + uid + "/" + pwd + "/" + test_api_key,
+		dataType: 'json',
+		xhrFields: {
+			withCredentials: true
+		},
+		crossDomain: true,
+		success: function (data, status, jqXHR) {
+			
+			$('#ajaxspinner').hide();
+			$("#outputpre").append(JSON.stringify(data, undefined, 2));
+			$("#headerpre").text(jqXHR.getAllResponseHeaders());
+			
+			if (data.is_logged)  {
+				
+				window.setTimeout(timerDisbleButtons, 12000000);
+				
+				$("#testprofilesbutton").prop('disabled', false);
+				$("#testscriptsbutton").prop('disabled', false);
+				
+			}
+			else {
+				
+			}
+			
+			
+			$.each(data, function (key, value) {
+				//handle the data  
+				console.log(key,value);
+			});
+
+
+		},
+		error: function (ts) {
+			$('#ajaxspinner').hide();
+			console.log(ts.responseText);
+		},
+		
+	});
+
+});
+
+
+$("#testprofilesbutton").click(function(e) {
+	
+	e.preventDefault();
+	cleardivs();
+	
+	var uid = $("#uid").val();
+	var pwd = $("#pwd").val();
+		
+	$.ajax({
+		url:  base_api_uri+"/login/" + uid + "/" + pwd + "/" + test_api_key,
+		dataType: 'json',
+		xhrFields: {
+			withCredentials: true
+		},
+		crossDomain: true,
+		success: function (data, status, jqXHR) {
+			
+			$('#ajaxspinner').hide();
+			$("#outputpre").append(JSON.stringify(data, undefined, 2));
+			$("#headerpre").text(jqXHR.getAllResponseHeaders());
+			
+			if (data.is_logged)  {
+				
+				$("#testprofilesbutton").prop('disabled', false);
+				$("#testscriptsbutton").prop('disabled', false);
+				
+			}
+			else {
+				
+			}
+			
+			
+			$.each(data, function (key, value) {
+				//handle the data  
+				console.log(key,value);
+			});
+
+
+		},
+		error: function (ts) {
+			$('#ajaxspinner').hide();
+			console.log(ts.responseText);
+		},
+		
 	});
 
 });
