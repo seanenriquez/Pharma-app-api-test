@@ -336,6 +336,12 @@ $base_api_key = "1234567890QWERTYzxcvb";
 
 							</div>     
 
+							<div align="left">
+								<button id="testnewpatientbutton" class="btn btn-success" style="margin-bottom: 1.5em;">
+									<img src="spinner.gif" id="newpatientspinner" /> New Patient Form 
+								</button>
+
+							</div>     
 
 
 							<p class="help-block">Method and Endpoint are required. Click
@@ -422,8 +428,9 @@ $base_api_key = "1234567890QWERTYzxcvb";
 		</div>
 
 <!--		<script src="jquery-1.10.2.min.js"></script>  -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+		<script src="bootstrap/js/bootstrap.min.js"></script>
+		<script src="chance.js"></script>
 		<script src="debug.js"></script>
 
 	</body>

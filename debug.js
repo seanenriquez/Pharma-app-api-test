@@ -10,6 +10,7 @@ $('#loginspinner').hide();
 $('#registerinfospinner').hide();
 $('#registerpostspinner').hide();
 $('#helpspinner').hide();
+$('#newpatientspinner').hide();
 
 function showHeaders() {
 	showAuthHeaders();
@@ -567,3 +568,67 @@ $("#testregisterpostbutton").click(function(e) {
 
 });
 
+$("#testnewpatientbutton").click(function(e) {
+	
+	e.preventDefault();
+	cleardivs();
+	$('#newpatientspinner').show();
+			
+	$.ajax({
+		url:  base_api_uri+"/newpatientpost/" + test_api_key,
+		type: "POST",
+		data: {
+        location: '0',
+        first_name: chance.first(),
+        last_name: chance.last(),
+        street_address: chance.address(),
+        city:  chance.city(),
+        state: chance.state(),
+        zip: chance.zip(),
+   	  email: chance.email(),
+    	  phone_number: chance.phone(),
+    	  date_birth: chance.birthday({string: true}),
+    	  alternate_contact_name: chance.name(),
+    	  alternate_contact_phone_number: chance.phone(),
+    	  allergies: chance.sentence(),
+    	  auto_refill_scripts: "Yes",
+    	  send_text_notifications: "Yes",
+    	  send_email_notifications: "Yes",
+    	  pharmacy_name: chance.name(),
+    	  pharmacy_number: chance.phone(),
+    	  prescription_number_1: chance.natural(),
+    	  prescription_name_1: chance.string({length: 9}),
+    	  prescription_number_2: chance.natural(),
+    	  prescription_name_2: chance.string({length: 9}),
+    	  prescription_number_3: chance.natural(),
+    	  prescription_name_3: chance.string({length: 9}),
+    	  prescription_number_4: chance.natural(),
+    	  prescription_name_4: chance.string({length: 9}),
+    	  message: chance.paragraph()
+    	},
+		contentType: "application/x-www-form-urlencoded",
+		dataType: 'json',
+		xhrFields: {
+			withCredentials: true
+		},
+		success: function (data, status, jqXHR) {
+			
+			$('#newpatientspinner').hide();
+			$("#outputpre").append(JSON.stringify(data, undefined, 2));
+			$("#headerpre").text(jqXHR.getAllResponseHeaders());
+								
+			$.each(data, function (key, value) {
+				//handle the data  
+				console.log(key,value);
+			});
+
+
+		},
+		error: function (ts) {
+			$('#newpatientspinner').hide();
+			console.log(ts.responseText);
+		},
+		
+	});
+
+});
