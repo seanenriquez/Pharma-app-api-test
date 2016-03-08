@@ -1,7 +1,7 @@
 <?php
 
 //$base_api_url = "https://eda22bb1.ngrok.io/templates/dev/api";
-$base_api_url = "https://eda22bb1.ngrok.io/templates/dev/api";
+$base_api_url = "http://localhost/templates/dev/api";
 $base_api_key = "1234567890QWERTYzxcvb";
 
 
@@ -144,9 +144,9 @@ $base_api_key = "1234567890QWERTYzxcvb";
 
 							<div align="left">
 								<button id="testaboutbutton" class="btn btn-success" style="margin-bottom: 1.5em;">
-									About 
+								<img src="spinner.gif" id="aboutspinner" /> About 
 								</button>
-								- {base-url}/about/{api-key}
+								- {base-url}/<b>about</b>/{api-key}
 							</div>
 
 							<div align="left">
@@ -168,22 +168,24 @@ $base_api_key = "1234567890QWERTYzxcvb";
 									</div>
 
 								</div> 
+								
 								<button id="testloginbutton" class="btn btn-success" style="margin-bottom: 1.5em;">
-									Login 
+								<img src="spinner.gif" id="loginspinner" /> Login 
 								</button>
 
-								- {base-url}/login/<i>username</i>/<i>password</i>/{api-key}
+								- {base-url}/<b>login</b>/<i>username</i>/<i>password</i>/{api-key}
 							</div>
 
+							<!--
 							<div align="left">
 								<button id="testpostbutton"  class="btn btn-success" style="margin-bottom: 1.5em;">
 									Post Test 
 								</button>
-							</div>  
+							</div>   -->
 
 							<div align="left">
 								<button id="testprofilesbutton" disabled class="btn btn-success" style="margin-bottom: 1.5em;">
-									Profiles 
+								<img src="spinner.gif" id="profilespinner" /> Profiles 
 								</button>
 							</div>                
 							
@@ -200,7 +202,7 @@ $base_api_key = "1234567890QWERTYzxcvb";
 
 								</div> 
 								<button id="testscriptsbutton" disabled class="btn btn-success" style="margin-bottom: 1.5em;">
-									Presciptions 
+									<img src="spinner.gif" id="scriptspinner" />Presciptions 
 								</button>
 							</div>                
 							
@@ -208,7 +210,115 @@ $base_api_key = "1234567890QWERTYzxcvb";
 								<button id="testservicesbutton" class="btn btn-success" style="margin-bottom: 1.5em;">
 									Services 
 								</button>
-							</div>                
+							</div>  
+							
+							<div align="left">
+								<button id="testregisterinfobutton" class="btn btn-success" style="margin-bottom: 1.5em;">
+								<img src="spinner.gif" id="registerinfospinner" /> Register 
+								</button>
+							</div>  
+							
+							<div align="left">
+							
+								<div id="registerinfo">
+
+									<div class="row show-grid">
+										<div class="span5">
+											<div class="control-group">
+												<input id="location" class="control-label"> Location ID</label>
+											</div>
+										</div>
+
+									</div>
+									
+									<div class="row show-grid">
+										<div class="span2">
+											<div class="control-group">
+												<input id="first_name" class="control-label"> FirstName</label>
+											</div>
+										</div>
+
+										<div class="span3">
+											<div class="control-group">
+												<input id="last_name" class="control-label"> LastName</label>
+											</div>
+										</div>
+									</div>
+
+									<div class="row show-grid">
+										<div class="span2">
+											<div class="control-group">
+												<input id="street_address" class="control-label"> Address</label>
+											</div>
+										</div>
+
+										<div class="span3">
+											<div class="control-group">
+												<input id="city" class="control-label"> CityName</label>
+											</div>
+										</div>
+									</div>
+									<div class="row show-grid">
+										<div class="span2">
+											<div class="control-group">
+												<input id="state" class="control-label"> StateName</label>
+											</div>
+										</div>
+
+										<div class="span3">
+											<div class="control-group">
+												<input id="zip" class="control-label"> ZipName</label>
+											</div>
+										</div>
+									</div>
+									<div class="row show-grid">
+										<div class="span2">
+											<div class="control-group">
+												<input id="rxnbr" class="control-label"> RX Number/Id</label>
+											</div>
+										</div>
+
+										<div class="span3">
+											<div class="control-group">
+												<input id="gender" class="control-label"> Gender(M/F)</label>
+											</div>
+										</div>
+									</div>
+									<div class="row show-grid">
+										<div class="span2">
+											<div class="control-group">
+												<input id="birthdate" class="control-label"> Birthdate</label>
+											</div>
+										</div>
+
+										<div class="span3">
+											<div class="control-group">
+												<input id="email" class="control-label"> EmailAdd</label>
+											</div>
+										</div>
+									</div>
+									
+									<div class="row show-grid">
+										<div class="span2">
+											<div class="control-group">
+												<input id="security_question" class="control-label"> SecQuestion(ID)</label>
+											</div>
+										</div>
+
+										<div class="span3">
+											<div class="control-group">
+												<input id="security_answer" class="control-label"> SecAnswer</label>
+											</div>
+										</div>
+									</div>
+
+								</div> 
+								
+								<button id="testregisterpostbutton" class="btn btn-info" style="margin-bottom: 1.5em;">
+								<img src="spinner.gif" id="registerpostspinner" /> Register 
+								</button><p>{base-url}/<b>registerpost</b>/{api-key}</p>
+								
+							</div>
 
 							<div align="left">
 								<button id="testhelpbutton" class="btn btn-success" style="margin-bottom: 1.5em;">
@@ -274,21 +384,16 @@ $base_api_key = "1234567890QWERTYzxcvb";
 							</div>
 
 							<div align="left">
+								
 								<button id="addprambutton" class="btn btn-primary">
 									<i class="icon-plus icon-white"></i> Add parameter
 								</button>
+								
 								<button id="addfilebutton" class="btn btn-primary">
 									<i class="icon-file icon-white"></i> Add file
 								</button>
 							</div>
 							<br />
-
-							<div align="right">
-								<button id="submitajax" class="btn btn-success btn-large">
-									<i class="icon-download-alt icon-white"></i> Ajax request
-								</button>
-								<img src="spinner.gif" id="ajaxspinner" />
-							</div>
 						</fieldset>
 					</form>
 

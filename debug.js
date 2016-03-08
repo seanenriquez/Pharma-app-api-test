@@ -1,6 +1,15 @@
 var test_api_key = $("#keyvalue").val();
 var base_api_uri = $("#urlvalue").val();
 
+$('#aboutspinner').hide();
+$('#loginspinner').hide();
+$('#profilespinner').hide();
+$('#scriptspinner').hide();
+$('#servicespinner').hide();
+$('#loginspinner').hide();
+$('#registerinfospinner').hide();
+$('#registerpostspinner').hide();
+
 function showHeaders() {
 	showAuthHeaders();
 	showHeaderHeaders();
@@ -210,7 +219,6 @@ function cleardivs() {
 	$("#statuspre").removeClass("alert-success");
 	$("#statuspre").removeClass("alert-error");
 	$("#statuspre").removeClass("alert-warning");
-	$('#ajaxspinner').show();
 
 }
 
@@ -224,6 +232,7 @@ $("#testaboutbutton").click(function(e) {
 	
 	e.preventDefault();
 	cleardivs();
+	$('#aboutspinner').show();
 		
 	$.ajax({
 		url:  base_api_uri+"/about/"+test_api_key,
@@ -233,7 +242,7 @@ $("#testaboutbutton").click(function(e) {
 		},
 		success: function (data, status, jqXHR) {
 			
-			$('#ajaxspinner').hide();
+			$('#aboutspinner').hide();
 			$("#outputpre").append(JSON.stringify(data, undefined, 4));
 			$("#headerpre").text(jqXHR.getAllResponseHeaders());
 			
@@ -245,17 +254,19 @@ $("#testaboutbutton").click(function(e) {
 
 		},
 		error: function (ts) {
-			$('#ajaxspinner').hide();
+			$('#aboutspinner').hide();
 			console.log(ts.responseText);
 		},
 		
 	});
 
 });
+
 $("#testservicesbutton").click(function(e) {
 	
 	e.preventDefault();
 	cleardivs();
+	$('#servicespinner').show();
 		
 	$.ajax({
 		url:  base_api_uri+"/services/"+test_api_key,
@@ -265,7 +276,7 @@ $("#testservicesbutton").click(function(e) {
 		},
 		success: function (data, status, jqXHR) {
 			                                                                     0
-			$('#ajaxspinner').hide();
+			$('#servicespinner').hide();
 			$("#outputpre").append(JSON.stringify(data, undefined, 2));
 			$("#headerpre").text(jqXHR.getAllResponseHeaders());
 			
@@ -289,6 +300,7 @@ $("#testloginbutton").click(function(e) {
 	
 	e.preventDefault();
 	cleardivs();
+	$('#loginspinner').show();
 	
 	var uid = $("#uid").val();
 	var pwd = $("#pwd").val();
@@ -301,7 +313,7 @@ $("#testloginbutton").click(function(e) {
 		},
 		success: function (data, status, jqXHR) {
 			
-			$('#ajaxspinner').hide();
+			$('#loginspinner').hide();
 			$("#outputpre").append(JSON.stringify(data, undefined, 2));
 			$("#headerpre").text(jqXHR.getAllResponseHeaders());
 			
@@ -326,7 +338,7 @@ $("#testloginbutton").click(function(e) {
 
 		},
 		error: function (ts) {
-			$('#ajaxspinner').hide();
+			$('#loginspinner').hide();
 			console.log(ts.responseText);
 		},
 		
@@ -339,6 +351,7 @@ $("#testprofilesbutton").click(function(e) {
 	
 	e.preventDefault();
 	cleardivs();
+	$('#profilespinner').show();
 	
 	var uid = $("#uid").val();
 	var pwd = $("#pwd").val();
@@ -351,7 +364,7 @@ $("#testprofilesbutton").click(function(e) {
 		},
 		success: function (data, status, jqXHR) {
 			
-			$('#ajaxspinner').hide();
+			$('#profilespinner').hide();
 			$("#outputpre").append(JSON.stringify(data, undefined, 2));
 			$("#headerpre").text(jqXHR.getAllResponseHeaders());
 			
@@ -374,7 +387,7 @@ $("#testprofilesbutton").click(function(e) {
 
 		},
 		error: function (ts) {
-			$('#ajaxspinner').hide();
+			$('#profilespinner').hide();
 			console.log(ts.responseText);
 		},
 		
@@ -386,6 +399,8 @@ $("#testprofilesbutton").click(function(e) {
 $("#testscriptsbutton").click(function(e) {
 	
 	e.preventDefault();
+	$('#scriptspinner').show();
+
 	cleardivs();
 	
 	var profid = $("#profileid").val();
@@ -398,7 +413,7 @@ $("#testscriptsbutton").click(function(e) {
 		},
 		success: function (data, status, jqXHR) {
 			
-			$('#ajaxspinner').hide();
+			$('#scriptspinner').hide();
 			$("#outputpre").append(JSON.stringify(data, undefined, 2));
 			$("#headerpre").text(jqXHR.getAllResponseHeaders());
 			
@@ -418,10 +433,9 @@ $("#testscriptsbutton").click(function(e) {
 				console.log(key,value);
 			});
 
-
 		},
 		error: function (ts) {
-			$('#ajaxspinner').hide();
+			$('#scriptspinner').hide();
 			console.log(ts.responseText);
 		},
 		
@@ -429,21 +443,66 @@ $("#testscriptsbutton").click(function(e) {
 
 });
 
+$("#testregisterinfobutton").click(function(e) {
+	
+	e.preventDefault();
+	$('#registerinfospinner').show();
 
-$("#testpostbutton").click(function(e) {
+	cleardivs();
+	
+	var profid = $("#profileid").val();
+		
+	$.ajax({
+		url:  base_api_uri+"/registerinfo/" + test_api_key,
+		dataType: 'json',
+		xhrFields: {
+			withCredentials: true
+		},
+		success: function (data, status, jqXHR) {
+			
+			$('#registerinfospinner').hide();
+			$("#outputpre").append(JSON.stringify(data, undefined, 2));
+			$("#headerpre").text(jqXHR.getAllResponseHeaders());
+					
+			
+			$.each(data, function (key, value) {
+				//handle the data  
+				console.log(key,value);
+			});
+
+		},
+		error: function (ts) {
+			$('#registerinfospinner').hide();
+			console.log(ts.responseText);
+		},
+		
+	});
+
+});
+
+$("#testregisterpostbutton").click(function(e) {
 	
 	e.preventDefault();
 	cleardivs();
-	
-	var uid = $("#uid").val();
-	var pwd = $("#pwd").val();
-		
+	$('#registerspinner').show();
+			
 	$.ajax({
-		url:  base_api_uri+"/register/" + test_api_key,
+		url:  base_api_uri+"/registerpost/" + test_api_key,
 		type: "POST",
 		data: {
-        password: pwd,
-        userid: uid
+        location: $("#location").val(),
+        first_name: $("#first_name").val(),
+        last_name: $("#last_name").val(),
+        street_address: $("#street_address").val(),
+        city: $("#city").val(),
+        state: $("#state").val(),
+        zip: $("#zip").val(),
+        rxnbr: $("#rxnbr").val(),
+        gender: $("#gender").val(),
+        birthdate: $("#birthdate").val(),
+        email: $("#email").val(),
+        security_question: $("#security_question").val(),
+        security_answer: $("#security_answer").val()
     	},
 		contentType: "application/x-www-form-urlencoded",
 		dataType: 'json',
@@ -452,11 +511,10 @@ $("#testpostbutton").click(function(e) {
 		},
 		success: function (data, status, jqXHR) {
 			
-			$('#ajaxspinner').hide();
+			$('#registerspinner').hide();
 			$("#outputpre").append(JSON.stringify(data, undefined, 2));
 			$("#headerpre").text(jqXHR.getAllResponseHeaders());
-						
-			
+								
 			$.each(data, function (key, value) {
 				//handle the data  
 				console.log(key,value);
@@ -465,7 +523,7 @@ $("#testpostbutton").click(function(e) {
 
 		},
 		error: function (ts) {
-			$('#ajaxspinner').hide();
+			$('#registerspinner').hide();
 			console.log(ts.responseText);
 		},
 		
