@@ -134,6 +134,15 @@ $base_api_key = "1234567890QWERTYzxcvb";
 								value="<?= $base_api_key ?>">
 						</div>
 					</div>
+					
+					<div id="errordiv"></div>
+
+					<div class="alert alert-info">
+						<a class="close" data-dismiss="alert">&times;</a> <strong>Welcome!</strong>
+						Use this simple page to poke around at the API.
+						Specify HTTP method, URL and parameters, and click on <b>Ajax Request</b>.
+						Note that this page requires a browser with HTML5 support.
+					</div>
 
 					<form id="paramform" class="well" target="outputframe">
 
@@ -214,7 +223,7 @@ $base_api_key = "1234567890QWERTYzxcvb";
 							
 							<div align="left">
 								<button id="testregisterinfobutton" class="btn btn-success" style="margin-bottom: 1.5em;">
-								<img src="spinner.gif" id="registerinfospinner" /> Register 
+								<img src="spinner.gif" id="registerinfospinner" /> Register (info)
 								</button>
 							</div>  
 							
@@ -315,14 +324,14 @@ $base_api_key = "1234567890QWERTYzxcvb";
 								</div> 
 								
 								<button id="testregisterpostbutton" class="btn btn-info" style="margin-bottom: 1.5em;">
-								<img src="spinner.gif" id="registerpostspinner" /> Register 
+								<img src="spinner.gif" id="registerpostspinner" /> Register (post)
 								</button><p>{base-url}/<b>registerpost</b>/{api-key}</p>
 								
 							</div>
 
 							<div align="left">
 								<button id="testhelpbutton" class="btn btn-success" style="margin-bottom: 1.5em;">
-									Help 
+									<img src="spinner.gif" id="helpspinner" /> Help 
 								</button>
 
 							</div>     
@@ -389,22 +398,12 @@ $base_api_key = "1234567890QWERTYzxcvb";
 									<i class="icon-plus icon-white"></i> Add parameter
 								</button>
 								
-								<button id="addfilebutton" class="btn btn-primary">
-									<i class="icon-file icon-white"></i> Add file
-								</button>
 							</div>
 							<br />
 						</fieldset>
 					</form>
 
-					<div id="errordiv"></div>
 
-					<div class="alert alert-info">
-						<a class="close" data-dismiss="alert">&times;</a> <strong>Welcome!</strong>
-						Use this simple page to poke around at the API.
-						Specify HTTP method, URL and parameters, and click on <b>Ajax Request</b>.
-						Note that this page requires a browser with HTML5 support.
-					</div>
 
 				</div>
 

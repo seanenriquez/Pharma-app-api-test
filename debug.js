@@ -9,6 +9,7 @@ $('#servicespinner').hide();
 $('#loginspinner').hide();
 $('#registerinfospinner').hide();
 $('#registerpostspinner').hide();
+$('#helpspinner').hide();
 
 function showHeaders() {
 	showAuthHeaders();
@@ -261,6 +262,41 @@ $("#testaboutbutton").click(function(e) {
 	});
 
 });
+
+$("#testhelpbutton").click(function(e) {
+	
+	e.preventDefault();
+	cleardivs();
+	$('#helpspinner').show();
+		
+	$.ajax({
+		url:  base_api_uri+"/help/"+test_api_key,
+		dataType: 'json',
+		xhrFields: {
+			withCredentials: true
+		},
+		success: function (data, status, jqXHR) {
+			
+			$('#helpspinner').hide();
+			$("#outputpre").append(JSON.stringify(data, undefined, 4));
+			$("#headerpre").text(jqXHR.getAllResponseHeaders());
+			
+			$.each(data, function (key, value) {
+				//handle the data  
+				console.log(key,value);
+			});
+
+
+		},
+		error: function (ts) {
+			$('#helpspinner').hide();
+			console.log(ts.responseText);
+		},
+		
+	});
+
+});
+
 
 $("#testservicesbutton").click(function(e) {
 	
