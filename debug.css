@@ -1,5 +1,5 @@
 body {
-	background-color: #B9BDCB;
+	background-color: #FFF;
 }
 
 #allparameters, #allheaders, #authentication {
@@ -25,6 +25,10 @@ pre {
     border-radius: 4px;
 }
 
+section {
+	padding: .8rem;
+}
+
 #outputpre {	
   min-height: 600px;
   font-size: 85%;
@@ -46,6 +50,15 @@ pre {
 
 }
 
+.api-section {
+	padding-top: 2rem;
+	padding-bottom: 1rem;
+	border-bottom: thin solid #D9EDF7;
+}
+
+#apiform {
+	margin: 4px;
+}
 /* ajaxoutput */
 
 .alinenums {
