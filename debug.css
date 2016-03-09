@@ -50,6 +50,10 @@ section {
 
 }
 
+.label {
+	font-size: 85%;
+}
+
 .api-section {
 	padding-top: 2rem;
 	padding-bottom: 1rem;

@@ -156,14 +156,15 @@ $base_api_key = "1234567890QWERTYzxcvb";
 				<div class="row">
 					<div class="col-md-6">
 						<div class="card">
-							<div class="card-block">
+							<div class="card-block">   
+							
 								<h3 class="card-title">API Calls</h3>
 
 								<div class="api-section">
 									<h4 class="card-title">About</h4>
 									<p class="card-text"> theset asasdfasd fa'sdkfasdfds</p>
-									<button class="btn btn-primary" id="testaboutbutton">About</button>
-									<span class="label label-default">{base-url}/about/{api-key}</span>
+									<button class="btn btn-success-outline" id="testaboutbutton">About</button>
+									<span class="label label-warning">{base-url}/about/{api-key}</span>
 								</div>
 
 								<div class="api-section">
@@ -179,15 +180,15 @@ $base_api_key = "1234567890QWERTYzxcvb";
 										<input type="password" class="form-control form-control-lg" id="pwd" placeholder="Password">
 									</fieldset>
 
-									<button class="btn btn-success" id="testloginbutton"><i class="fa fa-sign-in"></i> Login</button>
-									<span class="label label-default">  {base-url}/login/username/password/{api-key}</span>
+									<button class="btn btn-success-outline" id="testloginbutton"><i class="fa fa-sign-in"></i> Login</button>
+									<span class="label label-warning">  {base-url}/login/username/password/{api-key}</span>
 								</div>
 
 								<div class="api-section">
 									<h4 class="card-title">Profiles</h4>
 									<p class="card-text"> theset asasdfasd fa'sdkfasdfds</p>
-									<button id="testprofilebutton" disabled class=" btn btn-success">Profiles</button>
-									<span class="label label-default">  {base-url}/login/username/password/{api-key}</span>
+									<button id="testprofilebutton" disabled class=" btn btn-success-outline">Profiles</button>
+									<span class="label label-warning">  {base-url}/login/username/password/{api-key}</span>
 								</div>
 
 								<div class="api-section">
@@ -198,20 +199,22 @@ $base_api_key = "1234567890QWERTYzxcvb";
 										<input type="text" class="form-control form-control-lg" id="profileid" placeholder="Profile ID for Prescription List">
 									</fieldset>
 									
-									<button id="testscriptsbutton" disabled class="btn btn-success">Prescriptions</button>
-									<span class="label label-default">  {base-url}/login/username/password/{api-key}</span>
+									<button id="testscriptsbutton" disabled class="btn btn-success-outline">Prescriptions</button>
+									<span class="label label-warning">  {base-url}/login/username/password/{api-key}</span>
 								</div>
 
 								<div class="api-section">
 									<h4 class="card-title">Services</h4>
 									<p class="card-text"> theset asasdfasd fa'sdkfasdfds</p>
-									<button class="btn btn-primary" id="testservicebutton">Services</button>
+									<button class="btn btn-success-outline" id="testservicebutton">Services</button>
+									<span class="label label-warning">  {base-url}/login/username/password/{api-key}</span>
 								</div>
 
 								<div class="api-section">
 									<h4 class="card-title">Help</h4>
 									<p class="card-text"> theset asasdfasd fa'sdkfasdfds</p>
-									<button class="btn btn-primary" id="testhelpbutton">Help</button>
+									<button class="btn btn-success-outline" id="testhelpbutton">Help</button>
+									<span class="label label-warning">  {base-url}/login/username/password/{api-key}</span>
 								</div>
 
 								<div class="api-section">
@@ -221,6 +224,7 @@ $base_api_key = "1234567890QWERTYzxcvb";
 									<button id="testregisterinfobutton " class="btn btn-success">
 										<img src="spinner.gif" id="registerinfospinner" /> Register (info)
 									</button>
+									<span class="label label-warning">  {base-url}/login/username/password/{api-key}</span>
 								</div>
 
 								<div class="api-section">
