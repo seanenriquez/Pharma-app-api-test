@@ -1,7 +1,7 @@
 <?php
 
 //$base_api_url = "https://eda22bb1.ngrok.io/templates/dev/api";
-$base_api_url = "https://eda22bb1.ngrok.io/templates/dev/api";
+$base_api_url = "http://localhost/templates/dev/api";
 $base_api_key = "1234567890QWERTYzxcvb";
 
 
@@ -154,7 +154,7 @@ $base_api_key = "1234567890QWERTYzxcvb";
 		<section>
 			<div class="container pad-top">
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-6 left-col">
 						<div class="card">
 							<div class="card-block">   
 							
@@ -163,43 +163,52 @@ $base_api_key = "1234567890QWERTYzxcvb";
 								<div class="api-section">
 									<h4 class="card-title">About</h4>
 									<p class="card-text"> theset asasdfasd fa'sdkfasdfds</p>
-									<button class="btn btn-success-outline" id="testaboutbutton">About</button>
+									<button class="btn btn-success-outline" id="testaboutbutton"><img src="spinner.gif" id="aboutspinner" /> About</button>
 									<span class="label label-warning">{base-url}/about/{api-key}</span>
 								</div>
 
 								<div class="api-section">
+									<h4 class="card-title">Tags</h4>
+									<p class="card-text"> Load all the internatinalized label tags for the forms.</p>
+									<button id="testtagsbutton" class="btn btn-success" style="margin-bottom: 1.5em;">
+										<img src="spinner.gif" id="tagsspinner" style="display: none;"> Tags
+									</button>
+									<span class="label label-warning">  {base-url}/tags/{api-key}</span>
+								</div>
+								
+								<div class="api-section">
 									<h4 class="card-title">Login</h4>
 									<p class="card-text"> theset asasdfasd fa'sdkfasdfds</p>
 									<fieldset class="form-group">
-										<label for="uid" class="sr-only ">Your username</label>
+										<label for="uid" class="sr-only ">Username</label>
 										<input type="text" class="form-control form-control-lg" id="uid" placeholder="Username">
 									</fieldset>
 
 									<fieldset class="form-group">
-										<label for="pwd" class="sr-only">Your password</label>
+										<label for="pwd" class="sr-only">Password</label>
 										<input type="password" class="form-control form-control-lg" id="pwd" placeholder="Password">
 									</fieldset>
 
-									<button class="btn btn-success-outline" id="testloginbutton"><i class="fa fa-sign-in"></i> Login</button>
-									<span class="label label-warning">  {base-url}/login/username/password/{api-key}</span>
+									<button class="btn btn-info-outline" id="testloginbutton"><img src="spinner.gif" id="loginspinner" /> Login</button>
+									<span class="label label-warning">  {base-url}/login/{api-key}</span>
 								</div>
 
 								<div class="api-section">
 									<h4 class="card-title">Profiles</h4>
-									<p class="card-text"> theset asasdfasd fa'sdkfasdfds</p>
+									<p class="card-text"> <i>Requires Login</i> theset asasdfasd fa'sdkfasdfds</p>
 									<button id="testprofilebutton" disabled class=" btn btn-success-outline">Profiles</button>
-									<span class="label label-warning">  {base-url}/login/username/password/{api-key}</span>
+									<span class="label label-warning">  {base-url}/pro/{api-key}</span>
 								</div>
 
 								<div class="api-section">
 									<h4 class="card-title">Prescriptions</h4>
-									<p class="card-text"> theset asasdfasd fa'sdkfasdfds</p>
+									<p class="card-text"> <i>Requires Login</i> theset asasdfasd fa'sdkfasdfds</p>
 									<fieldset class="form-group">
 										<label for="profileid" class="sr-only">Profile ID for Prescription List</label>
 										<input type="text" class="form-control form-control-lg" id="profileid" placeholder="Profile ID for Prescription List">
 									</fieldset>
 									
-									<button id="testscriptsbutton" disabled class="btn btn-success-outline">Prescriptions</button>
+									<button id="testscriptsbutton" disabled class="btn btn-success-outline"><img src="spinner.gif" id="scriptspinner" />Prescriptions</button>
 									<span class="label label-warning">  {base-url}/login/username/password/{api-key}</span>
 								</div>
 
@@ -218,16 +227,18 @@ $base_api_key = "1234567890QWERTYzxcvb";
 								</div>
 
 								<div class="api-section">
-									<h4 class="card-title">Register</h4>
-									<p class="card-text"> theset asasdfasd fa'sdkfasdfds</p>
+									<h4 class="card-title">Register Info</h4>
+									<p class="card-text"> Get the language=based tags needed for all the registration fields.</p>
 
-									<button id="testregisterinfobutton " class="btn btn-success">
+									<button id="testregisterinfobutton" class="btn btn-success-outline">
 										<img src="spinner.gif" id="registerinfospinner" /> Register (info)
 									</button>
-									<span class="label label-warning">  {base-url}/login/username/password/{api-key}</span>
+									<span class="label label-warning">  {base-url}/registerinfo/{api-key}</span>
 								</div>
 
 								<div class="api-section">
+									<h4 class="card-title">Register Post</h4>
+									<p class="card-text"> Get the language=based tags needed for all the registration fields.</p>
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
@@ -319,11 +330,13 @@ $base_api_key = "1234567890QWERTYzxcvb";
 
 
 								</div>
+								
+													
 								<div class="api-section">
 									<h4 class="card-title">New Patient Form POST</h4>
 									<p class="card-text"> theset asasdfasd fa'sdkfasdfds</p>
-									<button id="testnewpatientbutton" class="btn btn-success" style="margin-bottom: 1.5em;">
-										<img src="spinner.gif" id="newpatientspinner" style="display: none;"> New Patient Form 
+									<button id="testnewpatientpostbutton" class="btn btn-success" style="margin-bottom: 1.5em;">
+										<img src="spinner.gif" id="newpatientpostspinner" style="display: none;"> New Patient Form 
 									</button>
 								</div>
 							
@@ -401,7 +414,7 @@ $base_api_key = "1234567890QWERTYzxcvb";
 					<!-- Right side of site-->
 					<div class="col-md-6">
 						<div id="ajaxoutput">
-							<pre id="statuspre">0</pre>
+							<pre id="statuspre"></pre>
 							<pre class="pre-scrollable prettyprint linenums" id="outputpre"></pre>
 							<pre class="pre-scrollable prettyprint linenums" id="headerpre"></pre>
 						</div>

@@ -29,6 +29,11 @@ section {
 	padding: .8rem;
 }
 
+.left-col {
+	max-height: 700px;
+	overflow-y: scroll; 
+}
+
 #outputpre {	
   min-height: 600px;
   font-size: 85%;
