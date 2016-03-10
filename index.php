@@ -326,15 +326,9 @@ $base_api_key = "1234567890QWERTYzxcvb";
 										<img src="spinner.gif" id="newpatientspinner" style="display: none;"> New Patient Form 
 									</button>
 								</div>
-							</div>
-
-
-
-
-
-
-							<div class="card bot-card">
-								<div class="card-block">
+							
+							
+																<div class="api-section">
 									<h4 class="card-title">Method and Endpoint are required
 										<br>Click below to add additional parameters.</h4>
 
@@ -399,7 +393,7 @@ $base_api_key = "1234567890QWERTYzxcvb";
 
 									<br>
 									<br>
-								</div>	
+									</div>
 							</div>
 						</div>
 					</div>
