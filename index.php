@@ -327,8 +327,6 @@ $base_api_key = "1234567890QWERTYzxcvb";
 									<button id="testregisterpostbutton" class="btn btn-info" >
 										<i class="fa fa-check"></i> Register (post)
 									</button><span class="label label-default">{base-url}/registerpost/{api-key}</span>
-
-
 								</div>
 								
 													
