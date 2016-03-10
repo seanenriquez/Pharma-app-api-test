@@ -12,6 +12,8 @@ $('#registerpostspinner').hide();
 $('#helpspinner').hide();
 $('#newpatientspinner').hide();
 $('#tagsspinner').hide();
+$('#xferscriptspinner').hide();
+$('#newscriptspinner').hide();
 
 function showHeaders() {
 	showAuthHeaders();
@@ -620,7 +622,7 @@ $("#testnewpatientpostbutton").click(function(e) {
 		url:  base_api_uri+"/newpatientpost/" + test_api_key,
 		type: "POST",
 		data: {
-        location: '0',
+        location: chance.integer({min: 0, max: 1}),
         first_name: chance.first(),
         last_name: chance.last(),
         street_address: chance.address(),
@@ -674,3 +676,171 @@ $("#testnewpatientpostbutton").click(function(e) {
 	});
 
 });
+
+
+$("#testxfrescriptpostbutton").click(function(e) {
+	
+	e.preventDefault();
+	cleardivs();
+	$('#xfrescriptspinner').show();
+			
+	$.ajax({
+		url:  base_api_uri+"/xferscriptpost/" + test_api_key,
+		type: "POST",
+		data: {
+        location: chance.integer({min: 0, max: 1}),
+        first_name: chance.first(),
+        last_name: chance.last(),
+   	  email: chance.email(),
+    	  phone_number: chance.phone(),
+    	  date_birth: chance.birthday({string: true}),
+    	  pharmacy_name: chance.name(),
+    	  pharmacy_number: chance.phone(),
+    	  prescription_number_1: chance.natural(),
+    	  prescription_name_1: chance.string({length: 9}),
+    	  prescription_number_2: chance.natural(),
+    	  prescription_name_2: chance.string({length: 9}),
+    	  prescription_number_3: chance.natural(),
+    	  prescription_name_3: chance.string({length: 9}),
+    	  prescription_number_4: chance.natural(),
+    	  prescription_name_4: chance.string({length: 9}),
+    	  message: chance.paragraph()
+    	},
+		contentType: "application/x-www-form-urlencoded",
+		dataType: 'json',
+		xhrFields: {
+			withCredentials: true
+		},
+		success: function (data, status, jqXHR) {
+			
+			$('#xfrescriptspinner').hide();
+			$("#outputpre").append(JSON.stringify(data, undefined, 2));
+			$("#headerpre").text(jqXHR.getAllResponseHeaders());
+								
+			$.each(data, function (key, value) {
+				//handle the data  
+				console.log(key,value);
+			});
+
+
+		},
+		error: function (ts) {
+			$('#xfrescriptspinner').hide();
+			console.log(ts.responseText);
+		},
+		
+	});
+
+});
+
+$("#testxferscriptpostbutton").click(function(e) {
+	
+	e.preventDefault();
+	cleardivs();
+	$('#xfrescriptspinner').show();
+			
+	$.ajax({
+		url:  base_api_uri+"/xferscriptpost/" + test_api_key,
+		type: "POST",
+		data: {
+        location: chance.integer({min: 0, max: 1}),
+        first_name: chance.first(),
+        last_name: chance.last(),
+   	  email: chance.email(),
+    	  phone_number: chance.phone(),
+    	  date_birth: chance.birthday({string: true}),
+    	  pharmacy_name: chance.name(),
+    	  pharmacy_number: chance.phone(),
+    	  prescription_number_1: chance.natural(),
+    	  prescription_name_1: chance.string({length: 9}),
+    	  prescription_number_2: chance.natural(),
+    	  prescription_name_2: chance.string({length: 9}),
+    	  prescription_number_3: chance.natural(),
+    	  prescription_name_3: chance.string({length: 9}),
+    	  prescription_number_4: chance.natural(),
+    	  prescription_name_4: chance.string({length: 9}),
+    	  message: chance.paragraph()
+    	},
+		contentType: "application/x-www-form-urlencoded",
+		dataType: 'json',
+		xhrFields: {
+			withCredentials: true
+		},
+		success: function (data, status, jqXHR) {
+			
+			$('#xfrescriptspinner').hide();
+			$("#outputpre").append(JSON.stringify(data, undefined, 2));
+			$("#headerpre").text(jqXHR.getAllResponseHeaders());
+								
+			$.each(data, function (key, value) {
+				//handle the data  
+				console.log(key,value);
+			});
+
+
+		},
+		error: function (ts) {
+			$('#xfrescriptspinner').hide();
+			console.log(ts.responseText);
+		},
+		
+	});
+
+});
+
+
+$("#testnewscriptpostbutton").click(function(e) {
+	
+	e.preventDefault();
+	cleardivs();
+	$('#newscriptspinner').show();
+			
+	$.ajax({
+		url:  base_api_uri+"/newscriptpost/" + test_api_key,
+		type: "POST",
+		data: {
+        location: chance.integer({min: 0, max: 1}),
+        first_name: chance.first(),
+        last_name: chance.last(),
+   	  email: chance.email(),
+    	  phone_number: chance.phone(),
+    	  date_birth: chance.birthday({string: true}),
+    	  provider_name: chance.name(),
+    	  provider_number: chance.phone(),
+    	  medication_number_1: chance.natural(),
+    	  medication_name_1: chance.string({length: 9}),
+    	  medication_number_2: chance.natural(),
+    	  medication_name_2: chance.string({length: 9}),
+    	  medication_number_3: chance.natural(),
+    	  medication_name_3: chance.string({length: 9}),
+    	  medication_number_4: chance.natural(),
+    	  medication_name_4: chance.string({length: 9}),
+    	  message: chance.paragraph()
+    	},
+		contentType: "application/x-www-form-urlencoded",
+		dataType: 'json',
+		xhrFields: {
+			withCredentials: true
+		},
+		success: function (data, status, jqXHR) {
+			
+			$('#newscriptspinner').hide();
+			$("#outputpre").append(JSON.stringify(data, undefined, 2));
+			$("#headerpre").text(jqXHR.getAllResponseHeaders());
+								
+			$.each(data, function (key, value) {
+				//handle the data  
+				console.log(key,value);
+			});
+
+
+		},
+		error: function (ts) {
+			$('#newscriptspinner').hide();
+			console.log(ts.responseText);
+		},
+		
+	});
+
+});
+

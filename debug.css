@@ -1,5 +1,5 @@
 body {
-	background-color: #ECEFF3;
+	background-color: #fff;
 }
 
 #allparameters, #allheaders, #authentication {
@@ -30,7 +30,7 @@ section {
 }
 
 .left-col {
-	max-height: 700px;
+	max-height: 800px;
 	overflow-y: scroll; 
 }
 
